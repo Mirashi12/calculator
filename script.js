@@ -10,28 +10,29 @@ let result = 0;
 let operant = 0;
 let carry = 0;
 
+let display = document.getElementById('display');
 
 function add (a, b) {
     result = parseInt(a) + parseInt(b);
-    console.log(result);
+    display.textContent = result;
     return result;
 }
 
 function substract (a, b) {
     result = parseInt(a) - parseInt(b);
-    console.log(result);
+    display.textContent = result;
     return result;
 }
 
 function multiply (a, b) {
     result = parseInt(a) * parseInt(b);
-    console.log(result);
+    display.textContent = result;
     return result;
 }
 
 function divide (a, b) {
     result = parseInt(a) / parseInt(b);
-    console.log(result);
+    display.textContent = result;
     return result;
 }
 
@@ -64,7 +65,7 @@ function operate (operation) {
                 break;
         }
 
-        if (parseInt(operation[i]) >= 0 && operation.length >= 3) {
+        if (parseInt(operation[i]) >= 0 && operation.length > 3) {
             operation = operation.slice(3,);
             console.log(operation);
         } else {
@@ -81,6 +82,7 @@ for (let y =0 ; y < calc_buttons.length ; y++) {
     calc_buttons[y].addEventListener('click', (e) => {
         if (parseInt((e.target.id)) < 10) {
             operant = operant + e.target.id;
+            display.textContent = operant.slice(1,);
         } else if (e.target.id == 'equal') {
             operation.push(operant.slice(1,));
             operant = 0;
@@ -94,7 +96,7 @@ for (let y =0 ; y < calc_buttons.length ; y++) {
             operation.push(operant.slice(1,));
             operation.push(e.target.id);
             operant = 0;
-            console.log(operation);
+            display.textContent = operation;
         }
     });
 }

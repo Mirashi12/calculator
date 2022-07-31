@@ -20,10 +20,14 @@ body {
     max-width: 235px;
 }
 
-.screen {
+.screen-container {
     width: 235px;
     height: 100px;
     background:rgb(104, 174, 184);
+}
+
+#display {
+    color: blueviolet;
 }
 
 .btn {
