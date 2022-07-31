@@ -93,10 +93,16 @@ for (let y =0 ; y < calc_buttons.length ; y++) {
             operation = [];
             operant = 0;
         } else {
-            operation.push(operant.slice(1,));
-            operation.push(e.target.id);
-            operant = 0;
-            display.textContent = operation;
+            if (operation.length <= 1) {
+                operation.push(e.target.id);
+                operant = 0;
+                display.textContent = operation;
+            } else {
+                operation.push(operant.slice(1,));
+                operation.push(e.target.id);
+                operant = 0;
+                display.textContent = operation;
+            }
         }
     });
 }
