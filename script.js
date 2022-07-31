@@ -18,19 +18,19 @@ function add (a, b) {
 }
 
 function substract (a, b) {
-    result = a -b;
+    result = parseInt(a) - parseInt(b);
     console.log(result);
     return result;
 }
 
 function multiply (a, b) {
-    result = a * b;
+    result = parseInt(a) * parseInt(b);
     console.log(result);
     return result;
 }
 
 function divide (a, b) {
-    result = a / b;
+    result = parseInt(a) / parseInt(b);
     console.log(result);
     return result;
 }
@@ -53,22 +53,23 @@ function operate (operation) {
             case 'addition':
                 add(numA,numB);
                 break;
-            case '-':
+            case 'substraction':
                 substract(numA,numB);
                 break;
-            case '*':
+            case 'multiplication':
                 multiply(numA,numB);
                 break;
-            case '/':
+            case 'division':
                 divide(numA,numB);
                 break;
         }
 
-        if (parseInt(operation[i]) >= 0) {
-            operation = operation.slice(3,)
+        if (parseInt(operation[i]) >= 0 && operation.length >= 3) {
+            operation = operation.slice(3,);
             console.log(operation);
         } else {
-            operation = operation.slice(2,)
+            operation = operation.slice(2,);
+            console.log(operation);
         }
     }
 }
