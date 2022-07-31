@@ -80,7 +80,7 @@ let calc_buttons = document.querySelectorAll('.btn');
 
 for (let y =0 ; y < calc_buttons.length ; y++) {
     calc_buttons[y].addEventListener('click', (e) => {
-        if (parseInt((e.target.id)) < 10) {
+        if (Number.isInteger(parseInt(e.target.id)) == true ) {
             operant = operant + e.target.id;
             display.textContent = operant.slice(1,);
         } else if (e.target.id == 'equal') {
@@ -92,8 +92,11 @@ for (let y =0 ; y < calc_buttons.length ; y++) {
         } else if (e.target.id == 'btn-ac') {
             operation = [];
             operant = 0;
+            result = 0;
+            display.textContent = '';
         } else {
-            if (operation.length <= 1) {
+            if (result > 0) {
+                operation.push(result);
                 operation.push(e.target.id);
                 operant = 0;
                 display.textContent = operation;
