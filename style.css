@@ -17,14 +17,24 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 5px;
-    max-width: 100px;
+    max-width: 235px;
+}
+
+.screen {
+    width: 235px;
+    height: 100px;
+    background:rgb(104, 174, 184);
 }
 
 .buttons * {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 25px;
-    height: 25px;
+    width: 75px;
+    height: 75px;
     background: red;
+}
+
+.buttons *:hover {
+    background: rgb(216, 75, 75);
 }
