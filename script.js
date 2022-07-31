@@ -8,6 +8,7 @@ let result = 0;
 // We can probably make the code better by using the redeuce() function, check later
 
 let operant = 0;
+let carry = 0;
 
 
 function add (a, b) {
@@ -35,10 +36,19 @@ function divide (a, b) {
 }
 
 function operate (operation) {
-    for (let i = 0; i <= operation.length; i+=3) {
-        let numA = operation[i];
-        operator = operation[i+1];
-        let numB = operation[i+2];
+    while (operation.length != 0) {
+        let numA = 0;
+        let numB = 0;
+        let i = 0;
+        if (parseInt(operation[i]) >= 0) {
+            numA = operation[i];
+            operator = operation[i+1];
+            numB = operation[i+2];
+        } else {
+            operator = operation[i];
+            numA = result;
+            numB = operation[i+1];
+        }
         switch(operator) {
             case 'addition':
                 add(numA,numB);
@@ -52,6 +62,13 @@ function operate (operation) {
             case '/':
                 divide(numA,numB);
                 break;
+        }
+
+        if (parseInt(operation[i]) >= 0) {
+            operation = operation.slice(3,)
+            console.log(operation);
+        } else {
+            operation = operation.slice(2,)
         }
     }
 }
@@ -75,6 +92,7 @@ for (let y =0 ; y < calc_buttons.length ; y++) {
         } else if (e.target.id == 'equal') {
             operation.push(operant.slice(1,));
             operant = 0;
+            console.log(operation);
             operate(operation);
             operation = [];
         } else {
