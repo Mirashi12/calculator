@@ -74,17 +74,8 @@ function operate (operation) {
     }
 }
 
-//operation.push(1);
-//operation.push('*');
-//operation.push(5);
-
-//operate(operation);
-
-//let btn_container = document.getElementById('btn-container');
-//console.table(btn_container);
 let calc_buttons = document.querySelectorAll('.btn');
 
-//Need to assign numberA first, if more than 1 digit it doesnt work; need to make sure the whole number takes 1 index in array
 
 for (let y =0 ; y < calc_buttons.length ; y++) {
     calc_buttons[y].addEventListener('click', (e) => {
@@ -96,6 +87,9 @@ for (let y =0 ; y < calc_buttons.length ; y++) {
             console.log(operation);
             operate(operation);
             operation = [];
+        } else if (e.target.id == 'btn-ac') {
+            operation = [];
+            operant = 0;
         } else {
             operation.push(operant.slice(1,));
             operation.push(e.target.id);
