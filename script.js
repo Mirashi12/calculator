@@ -132,7 +132,12 @@ for (let y =0 ; y < calc_buttons.length ; y++) {
 }
 
 function addHistory() {
-    li_result = document.createElement('li');
+    let li_result = document.createElement('li');
     li_result.textContent = operation.join('');
-    history_container.prepend(li_result);
+        if (history_container.childElementCount > 13) { 
+            history_container.lastElementChild.remove()
+            history_container.prepend(li_result);
+        } else {
+            history_container.prepend(li_result);
+        }
 }
