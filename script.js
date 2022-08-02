@@ -134,5 +134,5 @@ for (let y =0 ; y < calc_buttons.length ; y++) {
 function addHistory() {
     li_result = document.createElement('li');
     li_result.textContent = operation.join('');
-    history_container.appendChild(li_result);
+    history_container.prepend(li_result);
 }

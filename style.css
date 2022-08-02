@@ -7,27 +7,42 @@ body {
     display: grid;
     grid-template-columns: 
     300px 600px auto auto;
-    align-items: center;
+    grid-template-rows: 
+    200px 500px 200px auto;
+
     justify-content: center;
 }
 
+.history-container {
+    display: inline-grid;
+    grid-row-start: 2;
+    grid-template-rows: 
+    100px 500px;
+}
+
+
+.history-container #history-title {
+    justify-self: center;
+}
+
 #history-ul {
-    grid-column-start: 1;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
     gap: 15px;
-    height: 800px;
-    padding-top: 200px;
+}
+
+li {
     list-style: none;
+    text-align: center;
+    justify-content: center;
+
 }
 
 .calc-container {
     grid-column-start: 2;
+    grid-row-start: 2;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     height: 800px;
     width: 235px;
