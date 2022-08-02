@@ -15,6 +15,8 @@ let display_result = document.getElementById('display-result');
 
 let history_container = document.getElementById('history-ul');
 
+let reset_button = document.getElementById('reset-img');
+
 
 function add (a, b) {
     result = parseInt(a) + parseInt(b);
@@ -141,3 +143,9 @@ function addHistory() {
             history_container.prepend(li_result);
         }
 }
+
+reset_button.addEventListener('click', () => {
+    while (history_container.firstChild) {
+        history_container.removeChild(history_container.lastChild);
+    }
+})
