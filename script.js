@@ -82,30 +82,44 @@ for (let y =0 ; y < calc_buttons.length ; y++) {
     calc_buttons[y].addEventListener('click', (e) => {
         if (Number.isInteger(parseInt(e.target.id)) == true ) {
             operant = operant + e.target.id;
-            display.textContent = operant.slice(1);
+            display.textContent = display.textContent + operant.slice(1);
         } else if (e.target.id == '=') {
             operation.push(operant.slice(1));
             operant = 0;
             console.log(operation);
             operate(operation);
             operation = [];
+            operation.push(result)
         } else if (e.target.id == 'btn-ac') {
             operation = [];
             operant = 0;
             result = 0;
             display.textContent = '';
         } else {
-            if (result > 0) {
+            if (result > 0 && operation.length == 2) {
+                operation.push(operant.slice(1));
+                operate(operation);
+                operant = 0;
+                operation = [];
                 operation.push(result);
                 operation.push(e.target.id);
-                operant = 0;
                 display.innerText = operation.join('');
-            } else {
+            } else if (result == 0 && operation.length == 0) {
                 operation.push(operant.slice(1));
                 operation.push(e.target.id);
                 operant = 0;
                 display.innerText = operation.join('');
-            }
+            } else if (result == 0 && operation.length == 2) {
+                operation.push(operant.slice(1));
+                operate(operation);
+                operant = 0;
+                operation = [];
+                operation.push(result);
+                operation.push(e.target.id);
+                display.innerText = operation.join('');
+            } else if (result > 0 && operation.length == 1) {
+                operation.push(e.target.id);
+                display.innerText = operation.join('');
         }
-    });
+    }});
 }
