@@ -51,25 +51,25 @@ function operate (operation) {
             numB = operation[i+1];
         }
         switch(operator) {
-            case 'addition':
+            case '+':
                 add(numA,numB);
                 break;
-            case 'substraction':
+            case '-':
                 substract(numA,numB);
                 break;
-            case 'multiplication':
+            case '*':
                 multiply(numA,numB);
                 break;
-            case 'division':
+            case '/':
                 divide(numA,numB);
                 break;
         }
 
         if (parseInt(operation[i]) >= 0 && operation.length > 3) {
-            operation = operation.slice(3,);
+            operation = operation.slice(3);
             console.log(operation);
         } else {
-            operation = operation.slice(2,);
+            operation = operation.slice(2);
             console.log(operation);
         }
     }
@@ -82,9 +82,9 @@ for (let y =0 ; y < calc_buttons.length ; y++) {
     calc_buttons[y].addEventListener('click', (e) => {
         if (Number.isInteger(parseInt(e.target.id)) == true ) {
             operant = operant + e.target.id;
-            display.textContent = operant.slice(1,);
-        } else if (e.target.id == 'equal') {
-            operation.push(operant.slice(1,));
+            display.textContent = operant.slice(1);
+        } else if (e.target.id == '=') {
+            operation.push(operant.slice(1));
             operant = 0;
             console.log(operation);
             operate(operation);
@@ -99,12 +99,12 @@ for (let y =0 ; y < calc_buttons.length ; y++) {
                 operation.push(result);
                 operation.push(e.target.id);
                 operant = 0;
-                display.textContent = operation;
+                display.innerText = operation.join('');
             } else {
-                operation.push(operant.slice(1,));
+                operation.push(operant.slice(1));
                 operation.push(e.target.id);
                 operant = 0;
-                display.textContent = operation;
+                display.innerText = operation.join('');
             }
         }
     });
