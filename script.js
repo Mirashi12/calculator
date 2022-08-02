@@ -13,6 +13,8 @@ let carry = 0;
 let display_calculation = document.getElementById('display-calculation');
 let display_result = document.getElementById('display-result');
 
+let history_container = document.getElementById('history-ul');
+
 
 function add (a, b) {
     result = parseInt(a) + parseInt(b);
@@ -72,9 +74,10 @@ function operate (operation) {
             console.log(operation);
         } else {
             operation = operation.slice(2);
-            console.log(operation);
+            console.log(operation.join(''));
         }
     }
+    addHistory();
 }
 
 let calc_buttons = document.querySelectorAll('.btn');
@@ -126,4 +129,10 @@ for (let y =0 ; y < calc_buttons.length ; y++) {
                 display_calculation.innerText = operation.slice(1).join('');
         }
     }});
+}
+
+function addHistory() {
+    li_result = document.createElement('li');
+    li_result.textContent = operation.join('');
+    history_container.appendChild(li_result);
 }
