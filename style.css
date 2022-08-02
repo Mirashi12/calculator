@@ -50,21 +50,25 @@ li {
     flex-direction: column;
     align-items: center;
     height: 800px;
-    width: 235px;
+    width: 315px;
 }
 
 .buttons-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: 
+    75px 75px 75px 75px;
+    grid-template-rows:
+    75px 75px 75px 75px;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 5px;
-    max-width: 235px;
+    max-width: 315px;
 }
 
 .screen-container {
     display: flex;
     justify-content: space-between;
-    width: 235px;
+    width: 315px;
     height: 100px;
     background:rgb(104, 174, 184);
 }
@@ -92,4 +96,29 @@ li {
 
 .btn:hover {
     background: rgb(216, 75, 75);
+}
+
+#\= {
+    grid-row-start: 4;
+    grid-row-end: 5;
+    grid-column-start: 4;
+    width: 75px;
+    height: 155px;
+}
+
+#\30 {
+    grid-row-start: 5;
+    grid-row-end: 5;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    width: 150px;
+    height: 75px;
+}
+
+#\+ {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 4;
+    width: 75px;
+    height: 155px;
 }
