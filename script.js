@@ -10,29 +10,31 @@ let result = 0;
 let operant = 0;
 let carry = 0;
 
-let display = document.getElementById('display');
+let display_calculation = document.getElementById('display-calculation');
+let display_result = document.getElementById('display-result');
+
 
 function add (a, b) {
     result = parseInt(a) + parseInt(b);
-    display.textContent = result;
+    display_result.textContent = result;
     return result;
 }
 
 function substract (a, b) {
     result = parseInt(a) - parseInt(b);
-    display.textContent = result;
+    display_result.textContent = result;
     return result;
 }
 
 function multiply (a, b) {
     result = parseInt(a) * parseInt(b);
-    display.textContent = result;
+    display_result.textContent = result;
     return result;
 }
 
 function divide (a, b) {
     result = parseInt(a) / parseInt(b);
-    display.textContent = result;
+    display_result.textContent = result;
     return result;
 }
 
@@ -82,7 +84,7 @@ for (let y =0 ; y < calc_buttons.length ; y++) {
     calc_buttons[y].addEventListener('click', (e) => {
         if (Number.isInteger(parseInt(e.target.id)) == true ) {
             operant = operant + e.target.id;
-            display.textContent = display.textContent + operant.slice(1);
+            display_calculation.textContent = operation.join('') + operant.slice(1);
         } else if (e.target.id == '=') {
             operation.push(operant.slice(1));
             operant = 0;
@@ -90,11 +92,13 @@ for (let y =0 ; y < calc_buttons.length ; y++) {
             operate(operation);
             operation = [];
             operation.push(result)
+            display_calculation.textContent = '';
         } else if (e.target.id == 'btn-ac') {
             operation = [];
             operant = 0;
             result = 0;
-            display.textContent = '';
+            display_calculation.textContent = '';
+            display_result.textContent = '';
         } else {
             if (result > 0 && operation.length == 2) {
                 operation.push(operant.slice(1));
@@ -103,12 +107,12 @@ for (let y =0 ; y < calc_buttons.length ; y++) {
                 operation = [];
                 operation.push(result);
                 operation.push(e.target.id);
-                display.innerText = operation.join('');
+                display_calculation.innerText = operation.slice(1).join('');
             } else if (result == 0 && operation.length == 0) {
                 operation.push(operant.slice(1));
                 operation.push(e.target.id);
                 operant = 0;
-                display.innerText = operation.join('');
+                display_calculation.innerText = operation.join('');
             } else if (result == 0 && operation.length == 2) {
                 operation.push(operant.slice(1));
                 operate(operation);
@@ -116,10 +120,10 @@ for (let y =0 ; y < calc_buttons.length ; y++) {
                 operation = [];
                 operation.push(result);
                 operation.push(e.target.id);
-                display.innerText = operation.join('');
+                display_calculation.innerText = operation.join('');
             } else if (result > 0 && operation.length == 1) {
                 operation.push(e.target.id);
-                display.innerText = operation.join('');
+                display_calculation.innerText = operation.slice(1).join('');
         }
     }});
 }
