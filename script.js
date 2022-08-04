@@ -19,26 +19,70 @@ let reset_button = document.getElementById('reset-img');
 
 
 function add (a, b) {
-    result = parseInt(a) + parseInt(b);
-    display_result.textContent = result;
+    result = (Number(a) + Number(b)).toFixed(2);
+    if (result.slice(-2) > 0 && result.length < 7) {
+        display_result.textContent = result;
+    } else if (result.slice(-2) > 0 && result.length > 8) {
+        result = result.slice(0,8) + result.slice(-3);
+        display_result.textContent = result;
+    } else if (result.slice(-2) == 00 && result.length < 8) {
+        result = result.slice(0,-3);
+        display_result.textContent = result;
+    } else {
+        result = result.slice(0,8);
+        display_result.textContent = result;
+    }
     return result;
 }
 
 function substract (a, b) {
-    result = parseInt(a) - parseInt(b);
-    display_result.textContent = result;
+    result = (Number(a) - Number(b)).toFixed(2);
+    if (result.slice(-2) > 0 && result.length < 7) {
+        display_result.textContent = result;
+    } else if (result.slice(-2) > 0 && result.length > 8) {
+        result = result.slice(0,8) + result.slice(-3);
+        display_result.textContent = result;
+    } else if (result.slice(-2) == 00 && result.length < 8) {
+        result = result.slice(0,-3);
+        display_result.textContent = result;
+    } else {
+        result = result.slice(0,8);
+        display_result.textContent = result;
+    }
     return result;
 }
 
 function multiply (a, b) {
-    result = parseInt(a) * parseInt(b);
-    display_result.textContent = result;
+    result = (Number(a) * Number(b)).toFixed(2);
+    if (result.slice(-2) > 0 && result.length < 7) {
+        display_result.textContent = result;
+    } else if (result.slice(-2) > 0 && result.length > 8) {
+        result = result.slice(0,8) + result.slice(-3);
+        display_result.textContent = result;
+    } else if (result.slice(-2) == 00 && result.length < 8) {
+        result = result.slice(0,-3);
+        display_result.textContent = result;
+    } else {
+        result = result.slice(0,8);
+        display_result.textContent = result;
+    }
     return result;
 }
 
 function divide (a, b) {
-    result = parseInt(a) / parseInt(b);
-    display_result.textContent = result;
+    result = (Number(a) / Number(b)).toFixed(2);
+    if (result.slice(-2) > 0 && result.length < 7) {
+        display_result.textContent = result;
+    } else if (result.slice(-2) > 0 && result.length > 8) {
+        result = result.slice(0,8) + result.slice(-3);
+        display_result.textContent = result;
+    } else if (result.slice(-2) == 00 && result.length < 8) {
+        result = result.slice(0,-3);
+        display_result.textContent = result;
+    } else {
+        result = result.slice(0,8);
+        display_result.textContent = result;
+    }
     return result;
 }
 
@@ -96,8 +140,11 @@ for (let y =0 ; y < calc_buttons.length ; y++) {
             console.log(operation);
             operate(operation);
             operation = [];
-            operation.push(result)
+            operation.push(result);
             display_calculation.textContent = '';
+        } else if (e.target.id == '.') {
+            operant = operant + e.target.id;
+            display_calculation.textContent = operation.join(' ') + operant.slice(1);
         } else if (e.target.id == 'btn-ac') {
             operation = [];
             operant = 0;
